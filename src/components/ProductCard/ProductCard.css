@@ -1,0 +1,13 @@
+.product-name__ProductCard {
+  white-space: nowrap;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price__ProductCard {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 22px;
+}
