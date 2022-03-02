@@ -1,4 +1,7 @@
 import React, { FC, useEffect } from 'react'
+import { Button } from 'antd';
+
+import Navbar from '../components/Navbar'
 
 
 const Home: FC = () => {
@@ -8,7 +11,13 @@ const Home: FC = () => {
   }, [])
 
   return (
-    <div>This is Home Page</div>
+
+    <>
+
+      <Navbar />
+      <div>This is Home Page</div>
+
+    </>
   )
 }
 

@@ -8,6 +8,7 @@ import Details from './pages/Details'
 
 
 import './App.css';
+import 'antd/dist/antd.css'
 
 
 
