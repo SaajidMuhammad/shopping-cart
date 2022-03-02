@@ -14,7 +14,6 @@ const Home: FC = () => {
   return (
 
     <>
-
       <Navbar />
       <ProductWrapper />
 

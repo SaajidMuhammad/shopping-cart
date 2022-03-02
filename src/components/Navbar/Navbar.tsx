@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Input, Button } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 
 import './Navbar.css'
@@ -25,10 +26,13 @@ const Navbar: FC = () => {
 
       <div className='right-wrapper__Navbar'>
         <Button>Login</Button>
-        <Button type="text">
-          <ShoppingCartOutlined style={{ fontSize: "24px" }} />
 
-        </Button>
+        <Link to="/cart">
+          <Button type="text">
+            <ShoppingCartOutlined style={{ fontSize: "24px" }} />
+          </Button>
+        </Link>
+
       </div>
 
     </div>

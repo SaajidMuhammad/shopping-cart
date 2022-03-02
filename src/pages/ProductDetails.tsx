@@ -1,16 +1,14 @@
 import React, { FC } from 'react'
 import Navbar from '../components/Navbar/Navbar'
 
-const Cart: FC = () => {
+const Details: FC = () => {
   return (
     <>
-
       <Navbar />
 
-      Cart
-
+      Product Details Page
     </>
   )
 }
 
-export default Cart
+export default Details
