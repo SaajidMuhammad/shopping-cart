@@ -1,0 +1,41 @@
+.wrapper__DetailedProduct {
+  width: 96%;
+  margin: auto;
+  padding: 10vh 20px;
+}
+
+.container__DetailedProduct {
+  display: flex;
+}
+
+.image__DetailedProduct {
+  width: 400px;
+}
+
+.details__DetailedProduct {
+  padding: 0px 30px 10px;
+}
+
+.title__DetailedProduct {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.rating__DetailedProduct {
+  display: flex;
+}
+
+.rating-no__DetailedProduct {
+  margin-left: 12px;
+  margin-top: 8px;
+}
+
+.price__DetailedProduct {
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: 22px;
+}
+
+.quantity_DetailedProduct {
+  margin: 5px 15px;
+}

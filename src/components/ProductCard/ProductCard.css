@@ -3,6 +3,7 @@
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: black;
 }
 
 .price__ProductCard {
@@ -10,4 +11,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 22px;
+  color: black;
 }

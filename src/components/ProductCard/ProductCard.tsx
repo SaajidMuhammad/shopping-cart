@@ -14,12 +14,14 @@ const ProductCard = () => {
 
       <Row gutter={[32, 32]} justify="center">
         <Col span={5}>
-          <Link to="/product-details/123">
-            <Card
-              hoverable
-              cover={<img alt="example" src="https://www.notebookcheck.net/fileadmin/_processed_/0/9/csm_Untitled_2_5_2a2aef7903.jpg" style={{ height: 280 }} />}
+          <Card
+            hoverable
+            cover={<img alt="example" src="https://www.notebookcheck.net/fileadmin/_processed_/0/9/csm_Untitled_2_5_2a2aef7903.jpg" style={{ height: 280 }} />}
 
-            >
+          >
+
+            <Link to="/product-details/123">
+
               <div className='product-name__ProductCard'>
                 Product Name  Product Name  Product Name  Product Name  Product Name
               </div>
@@ -31,13 +33,13 @@ const ProductCard = () => {
               <div>
                 <Rate disabled defaultValue={2} />
               </div>
+            </Link>
 
-              <Button type="primary" block style={{ marginTop: "10px" }} >Add To Cart</Button>
+            <Button type="primary" block style={{ marginTop: "10px" }} >Add To Cart</Button>
 
 
-            </Card>
+          </Card>
 
-          </Link>
 
         </Col>
 
