@@ -1,3 +1,14 @@
+.cards-wrapper__ProductCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card__ProductCard {
+  width: 240px;
+  margin: 20px 8px !important;
+}
+
 .product-name__ProductCard {
   white-space: nowrap;
   font-weight: bold;
@@ -12,4 +23,11 @@
   text-overflow: ellipsis;
   font-size: 22px;
   color: black;
+}
+
+@media only screen and (max-width: 600px) {
+  .card__ProductCard {
+    width: 90%;
+    margin: 10px 8px !important;
+  }
 }
