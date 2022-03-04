@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Input, Button } from 'antd';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 
@@ -17,8 +17,9 @@ const Navbar: FC = () => {
   return (
     <div className='wrapper__Navbar'>
 
+      <div className='left-wrapper__Navbar' >
+        <Link to="/"> <HomeOutlined style={{ fontSize: "24px", margin: "3px 10px 2px 0px", color: "black" }} /></Link>
 
-      <div className='left-wrapper__Navbar'>
         <Search placeholder="input search text" onSearch={onSearch} enterButton className='search__Navbar' />
       </div>
 
@@ -39,4 +40,4 @@ const Navbar: FC = () => {
   )
 }
 
-export default Navbar
+export default Navbar 

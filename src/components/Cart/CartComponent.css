@@ -1,0 +1,27 @@
+.wrapper__CartComponent {
+  margin: 20px 5%;
+  padding: 10px;
+}
+
+.single-item__CartComponent {
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image__CartComponent {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.quantity-wrapper__CartComponent {
+  display: flex;
+}
+
+.quantity__CartComponent {
+  margin: 5px 15px;
+}
+
+
+

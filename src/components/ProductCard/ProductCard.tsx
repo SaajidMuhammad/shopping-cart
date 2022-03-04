@@ -1,48 +1,38 @@
 import React, { useEffect, useState, FC } from 'react'
-import { Card, Col, Row, Rate, Button } from 'antd';
-
+import { Card, Rate, Button } from 'antd';
 import axios from 'axios'
-
-// const { Meta } = Card;
-
-import "./ProductCard.css"
 import { Link } from 'react-router-dom';
+import "./ProductCard.css"
 
-
-
+interface IAllProducts {
+  id: string;
+  name: string;
+  describe?: string;
+  price: string;
+  currency?: string;
+  totalRates?: string;
+  totalRaters?: string;
+  imgURL?: string;
+}
 
 const ProductCard: FC = () => {
-
-  const [allProducts, setAllProducts] = useState([])
-  const [test, setTest] = useState("test")
-
+  const [allProducts, setAllProducts] = useState<IAllProducts[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-
     getAllProducts()
-
   }, [])
 
 
   const getAllProducts = (async () => {
-
-    console.log("getAllProducts")
-
     try {
       const { data } = await axios.get('/api/all-products');
-
-      console.log("gotAllProducts")
-
-      setTest("updated")
 
       setAllProducts(data.products)
       setIsLoaded(true)
 
-      console.log(isLoaded)
-
     } catch (error) {
-      console.log("error", error)
+      console.error("error", error)
     }
   })
 
@@ -51,12 +41,8 @@ const ProductCard: FC = () => {
   return (
 
     <>
-
-
       <div className="cards-wrapper__ProductCard ">
-
         {isLoaded ? allProducts?.map((prod, i) => {
-
           return (
             <Card
               hoverable
@@ -65,9 +51,8 @@ const ProductCard: FC = () => {
             >
 
               <Link to="/product-details/123">
-
                 <div className='product-name__ProductCard'>
-                  Name
+                  {allProducts?.name}
                 </div>
 
                 <div className='price__ProductCard'>
@@ -78,26 +63,12 @@ const ProductCard: FC = () => {
                   <Rate disabled defaultValue={2} />
                 </div>
               </Link>
-
               <Button type="primary" block style={{ marginTop: "10px" }} >Add To Cart</Button>
-
-
             </Card>
-
-
-
           )
-
-
         }) : ""}
-
-
-
       </div>
-
     </>
-
-
   )
 }
 

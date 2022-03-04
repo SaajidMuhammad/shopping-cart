@@ -4,10 +4,12 @@
   padding: 8px;
   justify-content: space-between;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  background: white;
 }
 
 .left-wrapper__Navbar {
   width: 360px;
+  display: flex;
 }
 
 .right-wrapper__Navbar {
