@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import './ProductCard.css'
 
-import ProductContext from '../../context/products-context'
+import ProductContext from '../../context/products/products-context'
 
 interface IAllProducts {
   id: string;

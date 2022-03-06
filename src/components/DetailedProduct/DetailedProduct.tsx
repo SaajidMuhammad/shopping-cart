@@ -1,21 +1,58 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useEffect, useState, useContext } from 'react'
 import "./DetailedProduct.css"
+import axios from 'axios'
 
 import { Card, Image, Rate, Divider, Button } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 
-
+import ProductContext from '../../context/products/products-context'
 
 
 const DetailedProduct: FC = () => {
+  // Contexts
+  const { products, updateProducts } = useContext(ProductContext)
+
+  // States
+  const [currProd, setCurrProd] = useState<any | null>(null)
+  const [prodRefetched, setProdRefetched] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log(window.location.href)
-  }, [])
+    let currentId = window.location.href.split("/").pop()
+
+    if (products.length > 0) {
+      getCurrentProdDetails(currentId)
+    } else {
+      getAllProducts()
+    }
+  }, [prodRefetched])
+
+
+  const getAllProducts = (async () => {
+
+    setProdRefetched(false)
+
+    try {
+      const { data } = await axios.get('/api/all-products');
+      updateProducts(data.products)
+      setProdRefetched(true)
+    } catch (error) {
+      console.error("error", error)
+    }
+  })
+
+
+  const getCurrentProdDetails = ((currentId: string | undefined) => {
+    let currentProd = products.filter((product: any) => {
+      if (product.id == currentId) {
+        return true
+      }
+    })
+    setCurrProd(currentProd)
+  })
+
 
   return (
     <div className='wrapper__DetailedProduct'>
-
       <Card>
         <div className='container__DetailedProduct'>
           <div className='image-div__DetailedProduct'>
