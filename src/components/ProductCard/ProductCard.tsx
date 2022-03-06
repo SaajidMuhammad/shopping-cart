@@ -1,8 +1,10 @@
-import React, { useEffect, useState, FC } from 'react'
+import React, { useEffect, FC, useContext } from 'react'
 import { Card, Rate, Button } from 'antd';
 import axios from 'axios'
-import { Link } from 'react-router-dom';
-import "./ProductCard.css"
+import { useNavigate } from 'react-router-dom';
+import './ProductCard.css'
+
+import ProductContext from '../../context/products-context'
 
 interface IAllProducts {
   id: string;
@@ -16,57 +18,55 @@ interface IAllProducts {
 }
 
 const ProductCard: FC = () => {
-  const [allProducts, setAllProducts] = useState<IAllProducts[]>([])
-  const [isLoaded, setIsLoaded] = useState(false)
+  const { updateProducts, products } = useContext(ProductContext)
 
   useEffect(() => {
     getAllProducts()
   }, [])
 
+  const navigate = useNavigate();
 
   const getAllProducts = (async () => {
     try {
       const { data } = await axios.get('/api/all-products');
-
-      setAllProducts(data.products)
-      setIsLoaded(true)
+      updateProducts(data.products)
 
     } catch (error) {
       console.error("error", error)
     }
   })
 
+  const productClicked = ((prodId: string) => {
+    navigate(`/product-details/${prodId}`);
+  })
 
 
   return (
-
     <>
       <div className="cards-wrapper__ProductCard ">
-        {isLoaded ? allProducts?.map((prod, i) => {
+        {products?.map((prod: IAllProducts) => {
           return (
             <Card
+              key={prod.id}
               hoverable
               className='card__ProductCard'
-              cover={<img alt="example" src="https://www.notebookcheck.net/fileadmin/_processed_/0/9/csm_Untitled_2_5_2a2aef7903.jpg" style={{ height: 280 }} />}
+              cover={<img alt="example" onClick={() => { productClicked(prod.id) }} src={prod?.imgURL} style={{ height: 280, objectFit: "cover" }} />}
             >
-
-              <Link to="/product-details/123">
+              <div onClick={() => { productClicked(prod.id) }}>
                 <div className='product-name__ProductCard'>
-                  {allProducts?.name}
+                  {prod?.name}
                 </div>
-
                 <div className='price__ProductCard'>
-                  12000 LKR
+                  {prod?.price} {prod?.currency}
                 </div>
-
                 <div>
-                  <Rate disabled defaultValue={2} />
+                  <Rate disabled defaultValue={3} />
                 </div>
-              </Link>
+              </div>
               <Button type="primary" block style={{ marginTop: "10px" }} >Add To Cart</Button>
             </Card>
           )
-        }) : ""}
+        })}
       </div>
     </>
   )

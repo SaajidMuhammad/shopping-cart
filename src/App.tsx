@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Details from './pages/ProductDetails'
 
-
+import ProductsState from './context/ProductsState';
 
 import './App.css';
 import 'antd/dist/antd.css'
@@ -46,22 +46,22 @@ createServer({
 
 const App: FC = () => {
 
-  let { prodId } = useParams();
 
 
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/cart' element={<Cart />} />
+        <ProductsState>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart />} />
 
+            <Route path='/product-details'>
+              <Route path=":prodId" element={<Details />} />
+            </Route>
 
-          <Route path='/product-details'>
-            <Route path=":prodId" element={<Details />} />
-          </Route>
-
-        </Routes>
+          </Routes>
+        </ProductsState>
       </Router>
 
     </div>

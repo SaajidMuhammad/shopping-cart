@@ -1,42 +1,39 @@
-import React from 'react'
+import { FC, useState, useEffect } from 'react'
 import "./DetailedProduct.css"
 
 import { Card, Image, Rate, Divider, Button } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 
 
-const DetailedProduct = () => {
+
+
+const DetailedProduct: FC = () => {
+
+  useEffect(() => {
+    console.log(window.location.href)
+  }, [])
+
   return (
     <div className='wrapper__DetailedProduct'>
 
       <Card>
         <div className='container__DetailedProduct'>
           <div className='image-div__DetailedProduct'>
-
             <Image
               className='image__DetailedProduct'
               src="https://www.notebookcheck.net/fileadmin/_processed_/0/9/csm_Untitled_2_5_2a2aef7903.jpg"
             />
-
           </div>
           <div className='details__DetailedProduct'>
-
             <div className='title__DetailedProduct'>
               Product Name  Product Name  Product Name  Product Name  Product Name
             </div>
 
-
             <div className='rating__DetailedProduct'>
-
-
-
-
               <Rate disabled defaultValue={2} />
-
               <div className='rating-no__DetailedProduct'>
                 23 Ratings
               </div>
-
             </div>
 
             <Divider />
@@ -70,20 +67,9 @@ const DetailedProduct = () => {
                 ADD TO CART
               </Button>
             </div>
-
-
           </div>
-
-
-
         </div>
       </Card>
-
-
-
-
-
-
     </div>
   )
 }
