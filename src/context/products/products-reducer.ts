@@ -1,7 +1,5 @@
 const productReducer = (state: any, action: any) => {
 
-  console.log(action)
-
   switch (action.type) {
     case "UPDATE_PRODUCTS":
       return {
