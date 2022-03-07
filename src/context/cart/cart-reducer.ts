@@ -8,7 +8,7 @@ const cartReducer = (state: any, action: any) => {
     case "UPDATE_CART":
       return {
         ...state,
-        cart: action.payload
+        cart: action.payload, 
       }
 
     case "ADD_TO_CART":
