@@ -17,13 +17,44 @@ const CartState: FC = (props: any) => {
     if (state.cart.length) {
       // Cart Not Empty
 
-      console.log("is not empty")
+      let isExist = false
+
+      let quantityUpdated = state.cart.map((singleCart: any) => {
+
+        if (singleCart.id === newItems.id) {
+
+          // if current item already exist in Cart
+
+          isExist = true
+
+          singleCart.items = singleCart.items + 1
+
+          return singleCart
+
+
+        } else {
+          // if current item not exist in Cart
+          return singleCart
+        }
+
+      })
+
+      console.log(quantityUpdated, "quantityUpdated")
+
+      dispatch({
+        type: "UPDATE_CART",
+        payload: quantityUpdated
+      })
+
 
     } else {
       // Cart is Empty
       dispatch({
         type: "ADD_TO_CART",
-        payload: newItems
+        payload: {
+          ...newItems,
+          items: 1
+        }
       })
     }
 
