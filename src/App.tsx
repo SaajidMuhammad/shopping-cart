@@ -6,6 +6,8 @@ import Cart from './pages/Cart'
 import Details from './pages/ProductDetails'
 
 import ProductsState from './context/products/ProductsState';
+import CartState from './context/cart/CartState';
+
 import productData from './mockData/productData'
 
 import './App.css';
@@ -40,15 +42,17 @@ const App: FC = () => {
     <div className="App">
       <Router>
         <ProductsState>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/cart' element={<Cart />} />
+          <CartState>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/cart' element={<Cart />} />
 
-            <Route path='/product-details'>
-              <Route path=":prodId" element={<Details />} />
-            </Route>
+              <Route path='/product-details'>
+                <Route path=":prodId" element={<Details />} />
+              </Route>
 
-          </Routes>
+            </Routes>
+          </CartState>
         </ProductsState>
       </Router>
     </div>

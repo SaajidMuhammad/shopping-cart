@@ -11,18 +11,31 @@ const CartState: FC = (props: any) => {
 
   const [state, dispatch] = useReducer(cartReducer, initialState)
 
-  const updateCart = ((cart: any) => {
-    dispatch({
-      type: "UPDATE_CART",
-      payload: cart
-    })
+  const triggerCart = ((newItems: any) => {
+
+
+    if (state.cart.length) {
+      // Cart Not Empty
+
+      console.log("is not empty")
+
+    } else {
+      // Cart is Empty
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: newItems
+      })
+    }
+
+
+
   })
 
 
   return (
     <CartContext.Provider value={{
       cart: state.cart,
-      updateCart
+      triggerCart
     }}>
       {props.children}
     </CartContext.Provider>)

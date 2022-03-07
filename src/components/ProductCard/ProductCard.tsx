@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './ProductCard.css'
 
 import ProductContext from '../../context/products/products-context'
+import CartContext from '../../context/cart/cart-context'
 
 interface IAllProducts {
   id: string;
@@ -19,6 +20,7 @@ interface IAllProducts {
 
 const ProductCard: FC = () => {
   const { updateProducts, products } = useContext(ProductContext)
+  const { triggerCart } = useContext(CartContext)
 
   useEffect(() => {
     getAllProducts()
@@ -40,6 +42,9 @@ const ProductCard: FC = () => {
     navigate(`/product-details/${prodId}`);
   })
 
+  const addToCart = ((prod: IAllProducts) => {
+    triggerCart(prod)
+  })
 
   return (
     <>
@@ -63,7 +68,13 @@ const ProductCard: FC = () => {
                   <Rate disabled defaultValue={3} />
                 </div>
               </div>
-              <Button type="primary" block style={{ marginTop: "10px" }} >Add To Cart</Button>
+              <Button
+                type="primary"
+                block
+                style={{ marginTop: "10px" }}
+                onClick={() => { addToCart(prod) }} >
+                Add To Cart
+              </Button>
             </Card>
           )
         })}
