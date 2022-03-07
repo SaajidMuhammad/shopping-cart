@@ -9,7 +9,7 @@ import CartContext from '../../context/cart/cart-context'
 
 const CartComponent: FC = () => {
 
-  const { cart } = useContext(CartContext)
+  const { cart, changeQuantity } = useContext(CartContext)
 
   return (
     <div className='wrapper__CartComponent'>
@@ -30,12 +30,12 @@ const CartComponent: FC = () => {
               </div>
 
               <div className='quantity-wrapper__CartComponent'>
-                <Button icon={<MinusOutlined />} />
+                <Button icon={<MinusOutlined />} onClick={() => changeQuantity(singleCart, "dec")} />
 
                 <div className='quantity__CartComponent'>
                   {singleCart?.items}
                 </div>
-                <Button icon={<PlusOutlined />} />
+                <Button icon={<PlusOutlined />} onClick={() => changeQuantity(singleCart, "inc")} />
 
               </div>
 

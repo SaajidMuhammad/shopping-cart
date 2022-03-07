@@ -18,21 +18,14 @@ const CartState: FC = (props: any) => {
       let isExist = false
 
       let quantityUpdated = state.cart.map((singleCart: any) => {
-
         if (singleCart.id === newItems.id) {
-
           // if current item already exist in Cart
           isExist = true
           singleCart.items = singleCart.items + 1
-          
-          return singleCart
-
-        } else {
-
-          // if current item not exist in Cart
-
           return singleCart
         }
+        // if current item not exist in Cart
+        return singleCart
       })
       if (!isExist) {
         newItems.items = 1
@@ -56,10 +49,70 @@ const CartState: FC = (props: any) => {
   })
 
 
+  const changeQuantity = ((item: any, type: string) => {
+
+    if (type === "inc") {
+      let quantityUpdated = state.cart.map((singleCart: any) => {
+        if (singleCart.id === item.id) {
+          // if current item already exist in Cart
+          item = true
+          singleCart.items = singleCart.items + 1
+          return singleCart
+        }
+        // if current item not exist in Cart
+        return singleCart
+
+      })
+
+      dispatch({
+        type: "UPDATE_CART",
+        payload: quantityUpdated
+      })
+    } else {
+      if (item.items > 1) {
+        let quantityUpdated = state.cart.map((singleCart: any) => {
+          if (singleCart.id === item.id) {
+            // if current item already exist in Cart
+            item = true
+            singleCart.items = singleCart.items - 1
+            return singleCart
+          }
+          // if current item not exist in Cart
+          return singleCart
+        })
+
+        dispatch({
+          type: "UPDATE_CART",
+          payload: quantityUpdated
+        })
+
+      } else {
+
+        let filteredItems = state.cart.filter((singleCart: any) => {
+          if (singleCart.id !== item.id) {
+            return singleCart
+          }
+        })
+
+        console.log(filteredItems, "filteredItems")
+
+        dispatch({
+          type: "UPDATE_CART",
+          payload: filteredItems
+        })
+      }
+    }
+
+
+
+  })
+
+
   return (
     <CartContext.Provider value={{
       cart: state.cart,
-      triggerCart
+      triggerCart,
+      changeQuantity
     }}>
       {props.children}
     </CartContext.Provider>)
