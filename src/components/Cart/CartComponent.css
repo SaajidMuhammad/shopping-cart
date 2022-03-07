@@ -1,6 +1,6 @@
 .wrapper__CartComponent {
-  margin:0 5% 20px;
-  padding:80px 10px;
+  margin: 0 5% 20px;
+  padding: 80px 10px;
   font-weight: 600;
 }
 
@@ -32,4 +32,10 @@
 
 .quantity__CartComponent {
   margin: 5px 15px;
+}
+
+.checkout-button__CartComponent {
+  width: 300px;
+  margin: 20px 0;
+  float: right;
 }
