@@ -1,6 +1,7 @@
 .wrapper__CartComponent {
   margin: 20px 5%;
   padding: 10px;
+  font-weight: 600;
 }
 
 .single-item__CartComponent {
@@ -9,19 +10,26 @@
   justify-content: space-between;
 }
 
+.price__CartComponent {
+  align-self: center;
+}
+
 .image__CartComponent {
   height: 100px;
   width: 100px;
   object-fit: cover;
 }
 
+.name__CartComponent {
+  display: flex;
+  align-self: center;
+}
+
 .quantity-wrapper__CartComponent {
   display: flex;
+  align-self: center;
 }
 
 .quantity__CartComponent {
   margin: 5px 15px;
 }
-
-
-

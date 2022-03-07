@@ -1,38 +1,50 @@
-import React, { FC } from 'react'
+import { FC, useContext, useState, useEffect } from 'react'
 import { Card, Button } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 
 import "./CartComponent.css"
 
+import CartContext from '../../context/cart/cart-context'
+
 
 const CartComponent: FC = () => {
+
+  const { cart } = useContext(CartContext)
+
   return (
     <div className='wrapper__CartComponent'>
-      <Card>
-        <div className='single-item__CartComponent'>
 
+      {cart?.map((singleCart: any, i: number) => {
 
-          <img className='image__CartComponent' src="https://static-01.daraz.lk/p/10dfb533278193e129a1fe308272326d.jpg" alt="" />
-          <div className='name__CartComponent'>
-            Name
-          </div>
+        return (
 
-          <div className='price__CartComponent'>
-            12000 LKR
-          </div>
+          <Card>
+            <div className='single-item__CartComponent'>
+              <img className='image__CartComponent' src={singleCart?.imgURL} alt="" style={{ objectFit: "cover" }} />
+              <div className='name__CartComponent'>
+                {singleCart?.name}
+              </div>
 
-          <div className='quantity-wrapper__CartComponent'>
-            <Button icon={<MinusOutlined />} />
+              <div className='price__CartComponent'>
+                {singleCart?.price + " " + singleCart?.currency}
+              </div>
 
-            <div className='quantity__CartComponent'>
-              2
+              <div className='quantity-wrapper__CartComponent'>
+                <Button icon={<MinusOutlined />} />
+
+                <div className='quantity__CartComponent'>
+                  {singleCart?.items}
+                </div>
+                <Button icon={<PlusOutlined />} />
+
+              </div>
+
             </div>
-            <Button icon={<PlusOutlined />} />
+          </Card>
+        )
 
-          </div>
+      })}
 
-        </div>
-      </Card>
     </div>
   )
 }

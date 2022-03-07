@@ -78,7 +78,7 @@
   .image__DetailedProduct {
     width: 100% !important;
     height: 400px !important;
-    object-fit: cover;
+    object-fit: cover !important;
   }
 
   .details__DetailedProduct {
