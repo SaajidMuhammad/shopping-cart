@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom'
 import { createServer } from "miragejs"
+import { useAuth0 } from '@auth0/auth0-react';
 
 // Pages
 import Home from './pages/Home'
@@ -42,6 +43,28 @@ createServer({
 })
 
 const App: FC = () => {
+
+  const { user, isAuthenticated, isLoading } = useAuth0()
+
+  useEffect(() => {
+
+    if (isLoading) {
+      console.log(isLoading, "isLoading")
+
+      console.log(isAuthenticated, "isAuthenticated")
+
+      console.log(user, "user")
+    } else {
+      console.log(isLoading, "isLoading")
+
+      console.log(isAuthenticated, "isAuthenticated")
+
+      console.log(user, "user")
+    }
+
+  }, [])
+
+
   return (
     <div className="App">
       <Router>

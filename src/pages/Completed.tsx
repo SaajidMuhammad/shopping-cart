@@ -7,7 +7,6 @@ const Completed: FC = () => {
     <>
       <Navbar />
       <Success />
-
     </>
   )
 }
