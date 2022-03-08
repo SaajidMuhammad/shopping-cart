@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom'
 import { createServer } from "miragejs"
-import { useAuth0 } from '@auth0/auth0-react';
 
 // Pages
 import Home from './pages/Home'
@@ -18,6 +17,7 @@ import productData from './mockData/productData'
 
 import './App.css';
 import 'antd/dist/antd.css'
+import Authentication from './pages/Authentication';
 
 
 // Mock Server
@@ -44,26 +44,6 @@ createServer({
 
 const App: FC = () => {
 
-  const { user, isAuthenticated, isLoading } = useAuth0()
-
-  useEffect(() => {
-
-    if (isLoading) {
-      console.log(isLoading, "isLoading")
-
-      console.log(isAuthenticated, "isAuthenticated")
-
-      console.log(user, "user")
-    } else {
-      console.log(isLoading, "isLoading")
-
-      console.log(isAuthenticated, "isAuthenticated")
-
-      console.log(user, "user")
-    }
-
-  }, [])
-
 
   return (
     <div className="App">
@@ -79,6 +59,8 @@ const App: FC = () => {
               </Route>
 
               <Route path='/success' element={<Completed />} />
+
+              <Route path='/authentication' element={<Authentication />} />
 
             </Routes>
           </CartState>

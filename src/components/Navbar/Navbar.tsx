@@ -3,7 +3,7 @@ import { Input, Button, Badge, Avatar } from 'antd';
 import { ShoppingCartOutlined, HomeOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-import { useAuth0, User } from '@auth0/auth0-react';
+// import { useAuth0, User } from '@auth0/auth0-react';
 
 import CartContext from '../../context/cart/cart-context'
 
@@ -14,17 +14,9 @@ const { Search } = Input;
 const Navbar: FC = () => {
   const { cart } = useContext(CartContext)
   const [cartItems, setCartItems] = useState<Number>(0)
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0<User>()
+  // const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0<User>()
 
 
-
-  useEffect(() => {
-    console.log(user, "user")
-
-    { JSON.stringify(user, null, 2) }
-
-
-  }, [])
 
   useEffect(() => {
     let totalItems = cart.reduce((total: number, cartItem: any) => {
@@ -49,14 +41,13 @@ const Navbar: FC = () => {
 
 
 
-        <div>{isAuthenticated}</div>
 
         <div>
-          <Button type='link' className='login-button__Navbar' onClick={() => { loginWithRedirect() }} >Login</Button>
+          <Button type='link' className='login-button__Navbar' onClick={() => { }} >Login</Button>
         </div>
 
         <div>
-          {isAuthenticated && <div>name {user?.name}</div>}        <Button type='link' className='login-button__Navbar' onClick={() => { logout({ returnTo: window.location.origin }) }} >Logout</Button>
+          <Button type='link' className='login-button__Navbar' onClick={() => { }} >Logout</Button>
         </div>
 
 
